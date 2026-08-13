@@ -8,16 +8,5 @@
   "metadata": {
     "description": "Collection of skills & plugins that Dennis use"
   },
-  "plugins": [
-    {
-      "name": "mattpocock-skills",
-      "description": "Dennis' fork of https://github.com/mattpocock/skills",
-      "category": "development",
-      "source": "./plugins/mattpocock-skills"
-    },
-    {
-      "name": "taste-skill",
-      "source": "./skills/taste-skill"
-    }
-  ]
+  "plugins": []
 }

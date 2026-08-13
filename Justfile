@@ -106,32 +106,3 @@ build-external module:
     else
         just _build-external-"{{module}}"
     fi
-
-_build-external-mattpocock-skills:
-    #!/usr/bin/env bash
-    set -euo pipefail
-    mkdir -p skills/mattpocock-skills
-    for category in productivity engineering; do
-        for dir in "external/mattpocock-skills/skills/$category"/*; do
-            if [ -d "$dir" ] && [ -f "$dir/SKILL.md" ]; then
-                name=$(basename "$dir")
-                echo "Copying skill: $name (from $category)"
-                rm -rf "skills/mattpocock-skills/$name"
-                cp -r "$dir" "skills/mattpocock-skills/$name"
-            fi
-        done
-    done
-
-
-_build-external-taste-skill:
-    #!/usr/bin/env bash
-    set -euo pipefail
-    mkdir -p skills/taste-skill
-    for dir in "external/taste-skill/skills/$category"/*; do
-        if [ -d "$dir" ] && [ -f "$dir/SKILL.md" ]; then
-            name=$(basename "$dir")
-            echo "Copying skill: $name (from $category)"
-            rm -rf "skills/taste-skill/$name"
-            cp -r "$dir" "skills/taste-skill/$name"
-        fi
-    done
