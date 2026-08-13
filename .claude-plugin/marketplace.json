@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "dennis-skills",
+  "owner": {
+    "name": "Dennis A. Walangadi",
+    "email": "dennis.walangadi@gmail.com"
+  },
+  "metadata": {
+    "description": "Collection of skills & plugins that Dennis use"
+  },
+  "plugins": [
+    {
+      "name": "mattpocock-skills",
+      "description": "Dennis' fork of https://github.com/mattpocock/skills",
+      "category": "development",
+      "source": "./plugins/mattpocock-skills"
+    },
+    {
+      "name": "taste-skill",
+      "source": "./skills/taste-skill"
+    }
+  ]
+}

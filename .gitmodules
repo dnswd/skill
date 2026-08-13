@@ -1,0 +1,6 @@
+[submodule "mattpocock-skills"]
+	path = external/mattpocock-skills
+	url = git@github.com:dnswd/mattpocock-skills.git
+[submodule "external/taste-skill"]
+	path = external/taste-skill
+	url = git@github.com:Leonxlnx/taste-skill.git
