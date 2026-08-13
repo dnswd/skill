@@ -19,13 +19,16 @@ add-external repo:
             "_build-external-$name:" \
             "    #!/usr/bin/env bash" \
             "    set -euo pipefail" \
-            "    mkdir -p skills/$name" \
+            "    rm -rf skills/$name" \
+            "    mkdir -p skills/$name/skills" \
+            "    if [ -d \"external/$name/.claude-plugin\" ]; then" \
+            "        cp -r \"external/$name/.claude-plugin\" \"skills/$name/\"" \
+            "    fi" \
             "    for dir in \"external/$name/skills\"/*; do" \
             "        if [ -d \"\$dir\" ] && [ -f \"\$dir/SKILL.md\" ]; then" \
-            "            name=\$(basename \"\$dir\")" \
-            "            echo \"Copying skill: \$name\"" \
-            "            rm -rf \"skills/$name/\$name\"" \
-            "            cp -r \"\$dir\" \"skills/$name/\$name\"" \
+            "            skill_name=\$(basename \"\$dir\")" \
+            "            echo \"Copying skill: \$skill_name\"" \
+            "            cp -r \"\$dir\" \"skills/$name/skills/\$skill_name\"" \
             "        fi" \
             "    done" >> Justfile
     fi
@@ -110,27 +113,33 @@ build-external module="":
 _build-external-taste-skill:
     #!/usr/bin/env bash
     set -euo pipefail
-    mkdir -p skills/taste-skill
+    rm -rf skills/taste-skill
+    mkdir -p skills/taste-skill/skills
+    if [ -d "external/taste-skill/.claude-plugin" ]; then
+        cp -r "external/taste-skill/.claude-plugin" "skills/taste-skill/"
+    fi
     for dir in "external/taste-skill/skills"/*; do
         if [ -d "$dir" ] && [ -f "$dir/SKILL.md" ]; then
             name=$(basename "$dir")
             echo "Copying skill: $name"
-            rm -rf "skills/taste-skill/$name"
-            cp -r "$dir" "skills/taste-skill/$name"
+            cp -r "$dir" "skills/taste-skill/skills/$name"
         fi
     done
 
 _build-external-mattpocock-skills:
     #!/usr/bin/env bash
     set -euo pipefail
-    mkdir -p skills/mattpocock-skills
+    rm -rf skills/mattpocock-skills
+    mkdir -p skills/mattpocock-skills/skills
+    if [ -d "external/mattpocock-skills/.claude-plugin" ]; then
+        cp -r "external/mattpocock-skills/.claude-plugin" "skills/mattpocock-skills/"
+    fi
     for category in productivity engineering; do
         for dir in "external/mattpocock-skills/skills/$category"/*; do
             if [ -d "$dir" ] && [ -f "$dir/SKILL.md" ]; then
                 name=$(basename "$dir")
                 echo "Copying skill: $name (from $category)"
-                rm -rf "skills/mattpocock-skills/$name"
-                cp -r "$dir" "skills/mattpocock-skills/$name"
+                cp -r "$dir" "skills/mattpocock-skills/skills/$name"
             fi
         done
     done
