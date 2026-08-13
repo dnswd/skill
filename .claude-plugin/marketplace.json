@@ -8,5 +8,14 @@
   "metadata": {
     "description": "Collection of skills & plugins that Dennis use"
   },
-  "plugins": []
+  "plugins": [
+    {
+      "name": "taste-skill",
+      "source": "./skills/taste-skill"
+    },
+    {
+      "name": "mattpocock-skills",
+      "source": "./skills/mattpocock-skills"
+    }
+  ]
 }

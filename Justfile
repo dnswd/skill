@@ -20,10 +20,10 @@ add-external repo:
             "    #!/usr/bin/env bash" \
             "    set -euo pipefail" \
             "    mkdir -p skills/$name" \
-            "    for dir in \"external/$name/skills/\$category\"/*; do" \
+            "    for dir in \"external/$name/skills\"/*; do" \
             "        if [ -d \"\$dir\" ] && [ -f \"\$dir/SKILL.md\" ]; then" \
             "            name=\$(basename \"\$dir\")" \
-            "            echo \"Copying skill: \$name (from \$category)\"" \
+            "            echo \"Copying skill: \$name\"" \
             "            rm -rf \"skills/$name/\$name\"" \
             "            cp -r \"\$dir\" \"skills/$name/\$name\"" \
             "        fi" \
@@ -80,7 +80,7 @@ remove-external repo:
     
     echo "Successfully removed external module: {{repo}}"
 
-list-externals:
+list-external:
     #!/usr/bin/env bash
     set -euo pipefail
     for dir in external/*; do
@@ -92,7 +92,7 @@ list-externals:
 update-external:
     git submodule update --init --recursive
 
-build-external module:
+build-external module="":
     #!/usr/bin/env bash
     set -euo pipefail
     if [ -z "{{module}}" ]; then
@@ -106,3 +106,31 @@ build-external module:
     else
         just _build-external-"{{module}}"
     fi
+
+_build-external-taste-skill:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    mkdir -p skills/taste-skill
+    for dir in "external/taste-skill/skills"/*; do
+        if [ -d "$dir" ] && [ -f "$dir/SKILL.md" ]; then
+            name=$(basename "$dir")
+            echo "Copying skill: $name"
+            rm -rf "skills/taste-skill/$name"
+            cp -r "$dir" "skills/taste-skill/$name"
+        fi
+    done
+
+_build-external-mattpocock-skills:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    mkdir -p skills/mattpocock-skills
+    for category in productivity engineering; do
+        for dir in "external/mattpocock-skills/skills/$category"/*; do
+            if [ -d "$dir" ] && [ -f "$dir/SKILL.md" ]; then
+                name=$(basename "$dir")
+                echo "Copying skill: $name (from $category)"
+                rm -rf "skills/mattpocock-skills/$name"
+                cp -r "$dir" "skills/mattpocock-skills/$name"
+            fi
+        done
+    done
