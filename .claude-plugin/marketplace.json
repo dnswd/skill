@@ -16,6 +16,10 @@
     {
       "name": "mattpocock-skills",
       "source": "./skills/mattpocock-skills"
+    },
+    {
+      "name": "knowledge-management",
+      "source": "./skills/knowledge-management"
     }
   ]
 }
