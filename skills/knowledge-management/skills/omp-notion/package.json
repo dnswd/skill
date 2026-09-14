@@ -1,0 +1,64 @@
+{
+  "name": "omp-notion",
+  "version": "3.0.4",
+  "description": "Notion API extension for omp — read, search, and manage Notion pages, databases, and content",
+  "keywords": [
+    "pi",
+    "pi-package",
+    "pi-extension",
+    "pi-coding-agent",
+    "ai",
+    "notion",
+    "productivity"
+  ],
+  "type": "module",
+  "files": [
+    "extensions/",
+    "skills/",
+    "README.md",
+    "LICENSE"
+  ],
+  "omp": {
+    "extensions": [
+      "./extensions/index.ts",
+      "./extensions/mcp-client.ts"
+    ],
+    "skills": [
+      "./skills"
+    ]
+  },
+  "peerDependencies": {
+    "@oh-my-pi/pi-ai": "*",
+    "@oh-my-pi/pi-coding-agent": "*",
+    "typebox": "*"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feniix/pi-extensions.git",
+    "directory": "packages/pi-notion"
+  },
+  "author": {
+    "name": "Sebastian Otaegui",
+    "url": "https://github.com/feniix"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/feniix/pi-extensions/issues"
+  },
+  "homepage": "https://github.com/feniix/pi-extensions/tree/main/packages/pi-notion#readme",
+  "devDependencies": {
+    "@types/node": "^22.19.17"
+  },
+  "peerDependenciesMeta": {
+    "@oh-my-pi/pi-ai": {
+      "optional": true
+    },
+    "@oh-my-pi/pi-coding-agent": {
+      "optional": true
+    },
+    "typebox": {
+      "optional": true
+    }
+  }
+}
