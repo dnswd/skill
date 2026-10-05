@@ -135,11 +135,12 @@ _build-external-mattpocock-skills:
         cp -r "external/mattpocock-skills/.claude-plugin" "skills/mattpocock-skills/"
     fi
     for category in productivity engineering; do
+        mkdir -p "skills/mattpocock-skills/skills/$category"
         for dir in "external/mattpocock-skills/skills/$category"/*; do
             if [ -d "$dir" ] && [ -f "$dir/SKILL.md" ]; then
                 name=$(basename "$dir")
                 echo "Copying skill: $name (from $category)"
-                cp -r "$dir" "skills/mattpocock-skills/skills/$name"
+                cp -r "$dir" "skills/mattpocock-skills/skills/$category/$name"
             fi
         done
     done
